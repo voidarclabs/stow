@@ -1,0 +1,9 @@
+.mozilla/firefox/yucao6m6.user01/crashes
+.mozilla/firefox/yucao6m6.user01/datareporting
+.mozilla/firefox/yucao6m6.user01/datareporting/glean
+.mozilla/firefox/yucao6m6.user01/datareporting/session-state.json
+.mozilla/firefox/yucao6m6.user01/security_state
+.mozilla/firefox/yucao6m6.user01/sessionstore-backups
+.mozilla/firefox/yucao6m6.user01/bookmarkbackups
+.mozilla/firefox/yucao6m6.user01/storage/*
+!.mozilla/firefox/yucao6m6.user01/storage/default/moz-extension*/
