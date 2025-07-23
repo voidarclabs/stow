@@ -1,3 +1,6 @@
 [submodule ".mozilla/firefox"]
 	path = .mozilla/firefox
 	url = https://github.com/voidarclabs/linux.firefox.git
+[submodule ".config/nvim"]
+	path = .config/nvim
+	url = https://github.com/voidarclabs/linux.nvim
