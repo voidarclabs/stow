@@ -1,0 +1,3 @@
+[submodule ".mozilla/firefox"]
+	path = .mozilla/firefox
+	url = https://github.com/voidarclabs/linux.firefox.git
