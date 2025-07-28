@@ -1,2 +1,0 @@
-sudo pacman -Sy neovim Hyprland kitty lazygit waybar fuzzel firefox thunar wlogout zsh cmatrix cava fastfetch syncthing
-stow -S .
