@@ -390,7 +390,7 @@
   "menus.media.hideAuthor": true,
   "menus.media.hideAlbum": true,
   "menus.media.displayTime": true,
-  "notifications.timeout": 7000,
+  "notifications.timeout": 5000,
   "menus.clock.time.military": true,
   "menus.clock.weather.enabled": false,
   "theme.bar.buttons.modules.ram.enableBorder": false,
@@ -537,5 +537,9 @@
   "bar.windowtitle.truncation_size": 70,
   "theme.bar.shadow": "0px 0px 0px 0px #16161e",
   "theme.bar.buttons.y_margins": "0.4em",
-  "theme.bar.margin_top": "0em"
+  "theme.bar.margin_top": "0em",
+  "notifications.position": "top",
+  "notifications.showActionsOnHover": true,
+  "theme.notification.opacity": 80,
+  "notifications.clearDelay": 0
 }
