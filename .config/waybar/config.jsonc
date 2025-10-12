@@ -1,0 +1,94 @@
+{
+    "height": 26,
+    "margin": "3 6",
+    "reload_style_on_change": true,
+    "position": "top",
+    "modules-left": [
+        "custom/logo",
+        "hyprland/workspaces"
+    ],
+    "modules-center": [
+        "mpris"
+    ],
+    "modules-right": [
+        "network",
+        "bluetooth",
+        "custom/notifs",
+        "battery",
+        "memory",
+        "cpu",
+        "custom/swaync",
+        "clock"
+    ],
+    "custom/logo": {
+        "format": ""
+    },
+    "mpris": {
+        "format": "{status_icon} {title} - {artist}",
+        "status-icons": {
+            "playing": "",
+            "paused": ""
+        }
+    },
+    "network": {
+        "format": "󰤭",
+        "format-ethernet": "󰈀",
+        "format-wifi": "{icon}",
+        "format-icons": [
+            "󰤟",
+            "󰤢",
+            "󰤥",
+            "󰤨"
+        ],
+        "format-alt": "{ipaddr} / {gwaddr}",
+        "tooltip-format": "{ifname} - {essid}"
+    },
+    "bluetooth": {
+        "format": "󰂲",
+        "format-connected": "󰂱",
+        "tooltip-format": "{status} - {device_alias}",
+        "on-click": "blueman-manager"
+    },
+    "custom/notifs": {
+        "format": "",
+        "on-click": "swaync-client --open-panel"
+    },
+    "battery": {
+        "format": "{icon} {capacity}%",
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format-icons": [
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    "memory": {
+        "format": " {percentage}%",
+        "tooltip-format": "{used:0.1f}GiB, {swapUsed:0.1f}GiB Swap"
+    },
+    "cpu": {
+        "format": " {usage}%"
+    },
+    "clock": {
+        "interval": 1,
+        "format": "{:%T}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+                    "mode"          : "year",
+                    "mode-mon-col"  : 3,
+                    "weeks-pos"     : "right",
+                    "on-scroll"     : 1,
+                    "format": {
+                              "months":     "<span color='#89b4fa'><b>{}</b></span>",
+                              "days":       "<span color='#eba0ac'><b>{}</b></span>",
+                              "weeks":      "<span color='#a6e3a1'><b>W{}</b></span>",
+                              "weekdays":   "<span color='#fab387'><b>{}</b></span>",
+                              "today":      "<span color='#cba6f7'><b><u>{}</u></b></span>"
+                              }
+                    },
+    }
+}
