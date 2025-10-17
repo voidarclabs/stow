@@ -62,7 +62,16 @@ window#waybar {
 
 #mpris {
     font-size: 14px;
+    transition: color 0.5s, background-color 0.5s;
+}
+
+#mpris.paused {
     color: #f2cdcd;
+}
+
+#mpris.playing {
+    color: rgba(30, 30, 46, 0.8);
+    background-color: #ca9ee6;
 }
 
 #network {
@@ -83,6 +92,7 @@ window#waybar {
 
 #custom-notifs {
     padding-left: 8px;
+    padding-right: 10px;
     background-color: #f9e2af;
     color: #1e1e2e;
 }
@@ -97,7 +107,7 @@ window#waybar {
 }
 
 #battery.charging {
-    color: #cdd6f4;
+    background-color: #40a02b;
 }
 
 #battery.critical {
