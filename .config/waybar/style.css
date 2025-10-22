@@ -100,14 +100,24 @@ window#waybar {
 #battery {
     background-color: #a6e3a1;
     color: #1e1e2e;
+    transition: color 0.5s, background-color 0.5s, linear-gradient 0.4s;
 }
 
 #battery.warning {
-    color: #f9e2af;
-}
+    color: #1e1e2e;
+background: #F38BA8;
+background: linear-gradient(135deg, rgba(243, 139, 168, 1) 0%, rgba(166, 218, 149, 1) 65%, rgba(166, 218, 149, 1) 100%);}
 
 #battery.charging {
     background-color: #40a02b;
+    background: #CBA6F7;
+background: linear-gradient(135deg, rgba(203, 166, 247, 1) 0%, rgba(166, 218, 149, 1) 65%, rgba(166, 218, 149, 1) 100%);
+}
+
+#battery.plugged {
+    background-color: #40a02b;
+    background: #CBA6F7;
+background: linear-gradient(135deg, rgba(203, 166, 247, 1) 0%, rgba(166, 218, 149, 1) 65%, rgba(166, 218, 149, 1) 100%);
 }
 
 #battery.critical {

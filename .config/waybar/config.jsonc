@@ -57,6 +57,8 @@
     },
     "battery": {
         "format": "{icon} {capacity}%",
+        "format-plugged": "󰂄 {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
         "states": {
             "warning": 30,
             "critical": 15
