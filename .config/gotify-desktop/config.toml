@@ -1,0 +1,20 @@
+[gotify]
+# gotify server websocket URL, use wss:// prefix for TLS, or ws:// for unencrypted
+url = "wss://ntfy.voidarc.co.uk:443"
+
+# secret gotify token
+token = "C5YKvW5h3NfJJIB"
+# if you want to get the token from a password manager, or other external command,
+# you can also use for example:
+# token = { command = "secret-tool lookup Title 'Gotify token'" }
+
+# optional, if true, deletes messages that have been handled, defaults to false
+# auto_delete = true
+
+[notification]
+# optional, ignores messages with priority lower than given value, defaults to 0
+min_priority = 1
+
+[action]
+# optional, run the given command for each message, with the following environment variables set: GOTIFY_MSG_PRIORITY, GOTIFY_MSG_TITLE and GOTIFY_MSG_TEXT.
+# on_msg_command = "/usr/bin/beep"
