@@ -1,0 +1,4 @@
+modmap:
+  - name: CapsLock to RightCtrl/Esc
+    remap:
+      CapsLock: Esc
