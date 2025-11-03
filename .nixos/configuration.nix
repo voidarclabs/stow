@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   imports =
@@ -6,14 +6,14 @@
       ./hardware-configuration.nix
     ];
   # Allow Nix command and flakes (ofc)
-  nix.settings.experimental-features = [ "nix-command" "flakes" ]; // you want this
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
 # Allow unfree packages
   nixpkgs = { 
 	  config = {
 		  allowUnfree = true;
 		  packageOverrides = pkgs: {
-			  unstable = import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz") {}; #to install packages from unstable, put "unstable." before the package
+			  unstable = import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz") {}; 
 		  };
 	  };
   };
@@ -23,17 +23,17 @@
     loader = {
 	timeout = 2;
   	  efi = {
-  		  canTouchEfiVariables = true; # allows dual booting windows i think
+  		  canTouchEfiVariables = true;
   	  };
   	  grub = {
   		  efiSupport = true;
   		  device = "nodev";
-  		  theme = pkgs.catppuccin-grub; #nice grub theme
+  		  theme = pkgs.catppuccin-grub;
   	  };
     };
     plymouth = {
 	enable = true;
-      theme = "catppuccin-mocha"; # nice plymouth theme
+      theme = "catppuccin-mocha";
       themePackages = with pkgs; [
         # By default we would install all themes
         (catppuccin-plymouth.override {
@@ -47,8 +47,8 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Networking settings
-  networking.hostName = "mobile02"; # Define your hostname. #change this to whatever u want ur hostname to be (will kick you off wifi)
-  networking.networkmanager.enable = true; #nmtui the goat
+  networking.hostName = "mobile02"; # Define your hostname.
+  networking.networkmanager.enable = true;
 
   # Enable bluetooth 
   hardware.bluetooth.enable = true;
@@ -56,14 +56,14 @@
   # Opengl and vulkan
   hardware.graphics = {
     enable = true;
-    extraPackages = with pkgs; [ # change if not intel graphics
+    extraPackages = with pkgs; [
       vaapiIntel
       vaapiVdpau
     ];
   };
 
   # Set your time zone.
-  time.timeZone = "Europe/London"; # obvious
+  time.timeZone = "Europe/London";
 
   # Locale
   i18n.defaultLocale = "en_GB.UTF-8";
@@ -83,10 +83,10 @@
   services.xserver.enable = true;
   services.displayManager.sddm = {
     enable = true;
-    theme = "catppuccin-mocha"; # login theme
+    theme = "catppuccin-mocha";
     package = pkgs.kdePackages.sddm;
   };
-  programs.hyprland.enable = true; # hyprland and io management
+  programs.hyprland.enable = true;
   security.polkit.enable = true;
 
   # Keymap
@@ -96,12 +96,10 @@
   };
   console.keyMap = "uk";
 
-  # Enable CUPS to print documents. (idk why this is here)
-
   # Pipewire
-  services.pulseaudio.enable = false; # fuck pulseaudio
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
-  services.pipewire = { # my goat pipewire
+  services.pipewire = {
     enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
@@ -109,39 +107,39 @@
   };
 
   # Local User
-  users.users.user01 = { # change user01 to what u want ur username to be
+  users.users.user01 = {
     isNormalUser = true;
-   shell = pkgs.zsh; # best shell ovs
-    description = "user01"; # useless lol
-    extraGroups = [ "input" "networkmanager" "docker" "wheel" ]; # docker not needed, but incase u want to install
-    packages = with pkgs; [ # packages that are installed only for ur user (if you switch user then these wont be available)
+   shell = pkgs.zsh;
+    description = "user01";
+    extraGroups = [ "input" "networkmanager" "docker" "wheel" ];
+    packages = with pkgs; [
         # Ricing
         bibata-cursors
         catppuccin-gtk
-	# (builtins.getFlake "/etc/nixos/way-edges").packages.${pkgs.system}.default (ignore this)
+	(builtins.getFlake "/etc/nixos/way-edges").packages.${pkgs.system}.default
 	waybar
 	swaynotificationcenter
 	fuzzel
-        swww # to set wallpapers, "swww img (path to img)
-        oh-my-posh # terminal shell
+        wpaperd
+        oh-my-posh
 
         # Terminal
-        carapace # better autocomplete
+        carapace
         kitty
         github-cli
         light
-	bluetuith # bluetooth tui if u want it
+	bluetuith
         wget
 	playerctl
         git
         fastfetch
-        lsd # better ls
-	# juce (ignore)
-        stow # for config management
+        lsd
+	juce
+        stow
 	fzf
-	ripgrep # nvim stuff
+	ripgrep
         zsh-autocomplete
-        # (if u want) nodejs
+        nodejs
         lazygit
         tailscale
 
@@ -154,8 +152,8 @@
         # Apps
         pavucontrol
         firefox
-        # tor-browser (if u want)
-	# gotify-desktop (ignore this, it's useless)
+        tor-browser
+	gotify-desktop
 	techmino
         mpv
         prismlauncher
@@ -168,7 +166,7 @@
   };
 
 # Zsh
-  programs.zsh = { # terminal config
+  programs.zsh = {
 	  enable = true;
 	  enableCompletion = true;
 	  enableBashCompletion = true;
@@ -181,27 +179,10 @@
 	  };
   };
 
-  # Ntfy Notifcations (doesnt work, feel free to delete)
-  systemd.user.services.ntfy-listener = {
-	  description = "NTFY listener for Hyprland notifications";
-	  after = [ "network-online.target" ];
-	  wants = [ "network-online.target" ];
-
-	  serviceConfig = {
-		  ExecStart = "/home/user01/.config/scripts/.venv/bin/python /home/user01/.config/scripts/notify.py";
-		  Restart = "always";
-		  RestartSec = 5;
-		  Environment = "DISPLAY=:0 XDG_RUNTIME_DIR=/run/user/%U PATH=/run/current-system/sw/bin";
-		  WorkingDirectory = "/home/user01"; # optional, but can help
-	  };
-
-	  wantedBy = [ "default.target" ];
-  };
-
 # User programs
   programs.steam.enable = true;
 
-# User Services (disable some of these idk)
+# User Services
   services.gvfs.enable = true;
   services.tailscale.enable = true;
   services.printing.enable = true;
@@ -210,11 +191,11 @@
 
   # Fonts
   fonts.packages = with pkgs; [
-	  nerd-fonts.fira-mono # best terminal font
+	  nerd-fonts.fira-mono
   ];
 
   fonts.fontconfig.defaultFonts.serif = [ "Fira Mono Nerd Font" ];
-   environment.systemPackages = with pkgs; [ # packages that are installed systemwide (dw u can still use user packages with sudo)
+   environment.systemPackages = with pkgs; [
 
       # Catppuccin sddm theme
       (pkgs.catppuccin-sddm.override {
@@ -230,7 +211,7 @@
       buildInputs = [ pkgs.makeWrapper ];
       postBuild = ''
         wrapProgram $out/bin/nvim \
-          --prefix PATH : ${pkgs.lib.makeBinPath [ # put lsps and stuff in this list, won't be accessible to anything but nvim (need to precede with pkgs.)
+          --prefix PATH : ${pkgs.lib.makeBinPath [
             pkgs.lua-language-server
 	    pkgs.vscode-langservers-extracted
 	    pkgs.emmet-ls
@@ -241,7 +222,7 @@
           ]}
       '';
     })
-      vim # dont remove or u die (nano is always installed just in case)
+      vim
       unzip
       python310 # Its python like come on
 
@@ -267,7 +248,7 @@
       gsettings-desktop-schemas
    ];
 
-  # The comment (don't ever change this number, its important)
+  # The comment
   system.stateVersion = "25.05"; # Did you read the comment?
 
 }
