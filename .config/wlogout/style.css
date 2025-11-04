@@ -53,21 +53,21 @@ button:last-child {
 }
 
 #lock:focus {
-    background-color: #d20f39;
+    background-color: #f38ba8;
 }
 
 #logout:focus {
-    background-color: #d79921;
-}
-
-#suspend:focus {
-    background-color: #04a5e5;
+    background-color: #fab387;
 }
 
 #shutdown:focus {
-    background-color: #40a02b;
+    background-color: #a6e3a1;
+}
+
+#suspend:focus {
+    background-color: #f9e2af;
 }
 
 #reboot:focus {
-    background-color: #8839ef;
+    background-color: #cba6f7;
 }
