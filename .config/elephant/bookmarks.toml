@@ -1,0 +1,3 @@
+[[browsers]]
+name = "firefox"
+command = "firefox --new-window %VALUE%"

@@ -70,6 +70,10 @@ provider = "todo"
 prefix = "%"
 provider = "bookmarks"
 
+[[browsers]]
+name = "firefox"
+command = "firefox --new-window %VALUE%"
+
 [[providers.prefixes]]
 prefix = "="
 provider = "calc"
