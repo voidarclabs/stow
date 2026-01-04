@@ -13,5 +13,6 @@ alias v="nvim"
 alias lg="lazygit"
 alias nsh="nix-shell -p"
 alias vif="nvim ~/.nixos/flake.nix"
+alias vic="nvim ~/.nixos/common.nix"
 
 source ~/.zshrc-local
