@@ -1,0 +1,35 @@
+{
+	"terminal_classes":[
+		"kitty",
+		"thunar"
+	],
+	"ignore_titles":[
+		"notificationtoasts_\\d+_desktop"
+	],
+	"monitors":{
+		"DP-1":{
+			"width":1364,
+			"height":767,
+			"offset":[
+				0,
+				0
+			]
+		},
+		"DP-2":{
+			"width":1364,
+			"height":767,
+			"offset":[
+				0,
+				0
+			]
+		},
+		"HDMI-A-1":{
+			"width":1364,
+			"height":767,
+			"offset":[
+				0,
+				0
+			]
+		}
+	}
+}
