@@ -17,7 +17,6 @@
         "network",
         "bluetooth",
         "custom/notifs",
-        "battery",
         "memory",
         "cpu",
         "custom/swaync",
