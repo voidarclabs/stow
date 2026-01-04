@@ -1,0 +1,38 @@
+# Where to install the symlinks. In most cases this will be either "$HOME" (dotfiles) or "/" (root configs).
+# Must be an absolute path. It can contain environment variables.
+target_dir = "$HOME"
+
+# Files and directories to ignore. Each entry is a glob pattern relative to the dotfiles directory.
+# IMPORTANT: Hidden files/directories are ignored by default. If you set `implicit_dot` to false, you should remove the `**/.*` pattern from this list.
+exclude_files = [
+  "LICENSE",
+  "README.md",
+	"**/.git",
+	".gitignore",
+	".gitmodules",
+]
+
+# Files and directories that are always symlinked, overriding `exclude_files`. Each entry is a glob pattern relative to the dotfiles directory.
+include_files = []
+
+# You can get a large performance boost by setting this to `false`, but read this first:
+# https://github.com/pol-rivero/doot/wiki/Tip:-set-explore_excluded_dirs-to-false
+explore_excluded_dirs = false
+
+# If set to true, files and directories in the root of the dotfiles directory will be prefixed with a dot. For example, `<dotfiles dir>/config/foo` will be symlinked to `~/.config/foo`.
+# This is useful if you don't want to have hidden files in the root of the dotfiles directory.
+implicit_dot = false
+
+# If set to true, the dotfiles will be installed as hardlinks instead of symlinks.
+# See: https://github.com/pol-rivero/doot/wiki/Installing-files-as-hardlinks
+use_hardlinks = false
+
+# Command and flags to use for displaying diffs. Use any tool and format you like, but it must accept 2 positional arguments for the files to compare.
+diff_command = "diff --unified --color=always"
+
+# Key-value pairs of "host name" -> "host-specific directory".
+# In the example below, <dotfiles dir>/laptop-dots/.zshrc will be symlinked to ~/.zshrc, taking precedence over <dotfiles dir>/.zshrc, if and only if the hostname is "my-laptop".
+# If `implicit_dot` is set to true, the host-specific directories also count as top-level. For example, <dotfiles dir>/laptop-dots/config/foo will be symlinked as ~/.config/foo.
+[hosts]
+"hackstation" = "pc-files"
+"laptop" = "laptop-files"

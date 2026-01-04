@@ -8,11 +8,10 @@ eval "$(oh-my-posh init zsh --config $HOME/.config/oh-my-posh/zen.toml)"
 
 # custom aliases
 alias ls="lsd -l"
-alias pa="sudo pacman"
+alias pa="sudo pacman" # compat
 alias v="nvim"
 alias lg="lazygit"
-alias n="nvim"
-alias vinix="nvim ~/.nixos/configuration.nix"
-alias vif="nvim ~/.nixos/flake.nix"
-alias nrs="sudo nixos-rebuild switch --impure --flake ~/.nixos#mobile02"
 alias nsh="nix-shell -p"
+alias vif="nvim ~/.nixos/flake.nix"
+
+source ~/.zshrc-local
