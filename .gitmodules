@@ -4,3 +4,4 @@
 [submodule ".nixos"]
 	path = .nixos
 	url = https://github.com/voidarclabs/nix
+	branch = main
