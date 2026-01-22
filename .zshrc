@@ -14,5 +14,6 @@ alias lg="lazygit"
 alias nsh="nix-shell -p"
 alias vif="nvim ~/.nixos/flake.nix"
 alias vic="nvim ~/.nixos/configs/common.nix"
+alias vimod="nvim --cmd 'cd .dotfiles/.nixos'"
 
 source ~/.zshrc-local
