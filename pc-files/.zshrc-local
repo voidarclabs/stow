@@ -1,3 +1,2 @@
 # Just for Hackstation
-alias vinix="nvim ~/.nixos/configs/configuration-pc.nix"
 alias nrs="sudo nixos-rebuild switch --impure --flake $(dirname $(readlink -f ~/.dotfiles/.nixos/flake.nix))#hackstation"

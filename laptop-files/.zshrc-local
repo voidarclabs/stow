@@ -1,3 +1,2 @@
 # Just for Laptop
-alias vinix="nvim ~/.nixos/configs/configuration-laptop.nix"
 alias nrs="sudo nixos-rebuild switch --impure --flake $(dirname $(readlink -f ~/.dotfiles/.nixos/flake.nix))#mobile02"
